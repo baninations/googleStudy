@@ -3,6 +3,8 @@ package com.example.fromgoogle
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
+import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -27,6 +29,25 @@ class MainActivity : AppCompatActivity() {
             URtoast.setGravity(Gravity.TOP,200,0)
             URtoast.show()
         }
+
+        CustomToast.setOnClickListener(){
+            showToast()
+        }
+    }
+
+    private fun showToast(){
+
+        val toastView = layoutInflater.inflate(
+            R.layout.toast_layout,
+            findViewById(R.id.toast_root)
+        )
+
+        with(Toast(applicationContext)){
+            duration = Toast.LENGTH_SHORT
+            view = toastView
+            show()
+        }
+
 
 
     }
